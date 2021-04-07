@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t nicksiwa/docker_react_ci -f Dockerfile.dev .
+
+script:
+  - docker run nicksiwa/docker_react_ci npm run test -- --coverage
